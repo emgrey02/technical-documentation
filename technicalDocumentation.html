@@ -1,0 +1,208 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="technicalDoc.css" media="screen"/>
+</head>
+
+<nav id="navbar">
+    <header>React Documentation</header>
+    <ul>
+        <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+        <li><a class="nav-link" href="#Prerequisites">Prerequisites</a></li>
+        <li><a class="nav-link" href="#Use_cases">Use cases</a></li>
+        <li><a class="nav-link" href="#How_does_React_use_JavaScript?">How does React use JavaScript?</a></li>
+        <li><a class="nav-link" href="#Setting_up_your_first_React_app">Setting up your first React app</a></li>
+        <li><a class="nav-link" href="#Exploring_our_first_React_component">Exploring our first React component</a></li>  
+    </ul>
+</nav>
+
+<main id="main-doc">
+    <section id="Introduction" class="main-section">
+        <header>Introduction</header>
+        <article>
+            <p>
+                React is a library for building user interfaces. React is not a framework - it's not 
+                even exclusive to the web. It's used with other libraries to render to certain environments. 
+                For instance, React Native can be used to build mobile applications; React 360 can be used to
+                build virtual reality applications; and there are other possibilities besides.
+            </p>
+    
+            <p>
+                To build for the web, developers use React in tandem with ReactDOM. React and ReactDOM are
+                often discussed in the same spaces as - and utilized to solve the same problems as - other
+                true web development frameworks. When we refer to React as a "framework", we're working
+                with that colloquial understanding.
+            </p>
+    
+            <p>
+                React's primary goal is to minimize the bugs that occur when developers are building UIs. 
+                It does this through the use of components — self-contained, logical pieces of code that 
+                describe a portion of the user interface. These components can be composed together to create 
+                a full UI, and React abstracts away much of the rendering work, leaving you to concentrate on 
+                the UI design. 
+            </p>
+        </article>
+    </section>
+
+    <section id="Prerequisites" class="main-section">
+        <header>Prerequisites</header>
+        <article>
+            <p>
+                Familiarity with the core HTML, CSS, and JavaScript languages, knowledge of the terminal/command line.
+            </p>
+    
+            <p>
+                React uses an HTML-in-JavaScript syntax called JSX (JavaScript and XML). Familiarity with both HTML 
+                and JavaScript will help you to learn JSX, and better identify whether bugs in your application 
+                are related to JavaScript or to the more specific domain of React.
+            </p>
+        </article>
+    </section>
+
+    <section id="Use_cases" class="main-section">
+        <header>Use cases</header>
+        <article>
+            <p>
+                Unlike the other frameworks covered in this module, React does not enforce strict rules around 
+                code conventions or file organization. This allows teams to set conventions that work best for 
+                them, and to adopt React in any way they would like to. React can handle a single button, a few 
+                pieces of an interface, or an app's entire user interface.
+            </p>
+    
+            <p>
+                While React can be used for small pieces of an interface, it's not as easy to "drop into" an 
+                application as a library like jQuery, or even a framework like Vue — it is more approachable 
+                when you build your entire app with React. 
+            </p>
+    
+            <p>
+                In addition, many of the developer-experience benefits of a React app, such as writing 
+                interfaces with JSX, require a compilation process. Adding a compiler like Babel to a 
+                website makes the code on it run slowly, so developers often set up such tooling with a 
+                build step. React arguably has a heavy tooling requirement, but it can be learned.
+            </p>
+        </article>
+    </section>
+
+    <section id="How_does_React_use_JavaScript?" class="main-section">
+        <header>How does React use JavaScript?</header>
+        <article>
+            <p>
+                React utilizes features of modern JavaScript for many of its patterns. Its biggest 
+                departure from JavaScript comes with the use of JSX syntax. JSX extends JavaScript's 
+                syntax so that HTML-like code can live alongside it. For example:
+
+            <code>
+                const heading = (h1)Mozilla Developer Network(/h1);
+            </code>
+            </p>
+            <p>
+                This heading constant is known as a JSX expression. React can use it to render that h1 tag in our app.
+    
+                Suppose we wanted to wrap our heading in a (header) tag, for semantic reasons? 
+                The JSX approach allows us to nest our elements within each other, 
+                just like we do with HTML:
+                <code>
+                    const header = (
+                    (header)
+                    (h1)Mozilla Developer Network(/h1)
+                    (/header)
+                    );
+                </code>
+            </p>
+            
+            <p>
+                Of course, your browser can't read JSX without help. When compiled (using a tool like Babel 
+                or Parcel), our header expression would look like this:
+                <code>
+                    const header = React.createElement("header", null,
+  React.createElement("h1", null, "Mozilla Developer Network")
+);
+                </code>
+            </p>
+
+            <p>
+                It's possible to skip the compilation step and use React.createElement() to write your UI 
+                yourself. In doing this, however, you lose the declarative benefit of JSX, and your code 
+                becomes harder to read. Compilation is an extra step in the development process, but many 
+                developers in the React community think that the readability of JSX is worthwhile. Plus, 
+                popular tooling makes the JSX-to-JavaScript compilation part of its setup process. You 
+                don't have to configure compilation yourself unless you want to.
+            </p>
+        </article>
+    </section>
+
+    <section id="Setting_up_your_first_React_app" class="main-section">
+        <header>Setting up your first React app</header>
+        <article>
+            <p>
+                There are many ways to use React, but we're going to use the command-line interface 
+                (CLI) tool create-react-app, as mentioned earlier, which expedites the process of 
+                developing a React application by installing some packages and creating some files 
+                for you, handling the tooling described above. 
+            </p>
+
+            <p>
+                It's possible to add React to a website without create-react-app by copying some
+                (script) elements into an HTML file, but the create-react-app CLI is a common 
+                starting point for React applications. Using it will allow you spend more time 
+                building your app, and less time fussing with setup. 
+            </p>
+
+            <ul>
+                <h2>Requirements</h2>
+                <li>
+                    In order to use create-react-app, you need to have Node.js installed. It's 
+                    recommended that you use the long-term support (LTS) version. Node includes 
+                    npm (the node package manager), and npx (the node package runner).
+                </li>
+                <li>
+                    You may also use the Yarn package manager as an alternative, but we'll assume 
+                    you are using npm in this set of tutorials. See Package management basics for 
+                    more information on npm and yarn.
+                </li>
+                <li>
+                    If you're using Windows, you will need to install some software to give you 
+                    parity with Unix/macOS terminal in order to use the terminal commands mentioned 
+                    in this tutorial. Gitbash (which comes as part of the git for Windows toolset) 
+                    or Windows Subsystem for Linux (WSL) are both suitable. See Command line crash 
+                    course for more information on these, and on terminal commands in general. 
+                </li>
+                <li>
+                    Also bear in mind that React and ReactDOM produce apps that only work on a fairly 
+                    modern set of browsers — IE9+ by way of some polyfills. It is recommended that you 
+                    use a modern browser like Firefox, Safari, or Chrome when working through these 
+                    tutorials.
+                </li>
+            </ul>
+        </article>
+    </section>
+
+    <section id="Exploring_our_first_React_component" class="main-section">
+        <header>Exploring our first React component</header>
+        <article>
+            <p>
+                In React, a component is a reusable module that renders a part of our app. These parts 
+                can be big or small, but they are usually clearly defined: they serve a single, obvious 
+                purpose.
+
+                <code>
+                    import React from 'react';
+                    import logo from './logo.svg';
+                    import './App.css';
+                    function App() {
+                </code>
+            </p>
+
+            <ul>
+                <li>Boobies</li>
+            </ul>
+
+            <p>
+                <code>
+                    Boobies.
+                </code>
+            </p>
+
+        </article>
+    </section>
+
+</main>
